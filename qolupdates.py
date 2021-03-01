@@ -10,6 +10,7 @@ this machine.
 """
 
 import os
+import subprocess
 import time
 import sys
 
@@ -38,7 +39,7 @@ def update():
                 ten_packages.append(packages_to_update)
 
         try:
-            os.system(f"apt install -y " + " ".join(ten_packages))
+            subprocess.run(['apt', 'install', '-y', ''.join(ten_packages)])
             ten_packages.clear()
         except PermissionError:
             print("[-] Permissions Error")
